@@ -98,3 +98,4 @@
 
 * task for tommarow -- firs create function for drag, eidt , resize, and for style --- then create a tool bar kind of thing -- so that it appear on page like for style -- to change font-family (a kind of option bar) , forn-size, color etc..
 * keep in mind -- on each slide -- we need to do indepent of other slide -- like whatever is done on slide 1 will not affect the slide 2 or any other slide-
+* and for new text and previous text both also be work independently.
