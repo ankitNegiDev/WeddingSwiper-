@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weeding card</title>
+
+        <!-- custom css link -->
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- swiper CDN -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+        />
+    </head>
+    <body>
+        <div>Testing</div>
+
+        <!-- this is main swiper container-->
+        <div class="swiper">
+
+            <!-- this is wrapper for all slides -->
+            <div class="swiper-wrapper">
+
+                <!-- this is slide 1 -->
+                <div class="swiper-slide">
+                    <div class="image-container">
+                        <img src="images/image1.jpg" alt="Image1" />
+                        <div class="text-box" contenteditable="true">
+                            Default text on slid 1
+                        </div>
+                    </div>
+                </div>
+
+                <!-- this is slide 2 -->
+                <div class="swiper-slide">
+                    <div class="image-container">
+                        <img src="images/image2.jpg" alt="Image2" />
+                        <div class="text-box" contenteditable="true">
+                            Default text on slide 2
+                        </div>
+                    </div>
+                </div>
+
+                <!-- this is slide 3 -->
+                <div class="swiper-slide">
+                    <div class="image-container">
+                        <img src="images/image3.jpg" alt="Image3" />
+                        <div class="text-box" contenteditable="true">
+                            Default text on slide 3
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Swiper navigation button -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+            <!-- Swiper pagination - three dots -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+        <!-- adding the script.js -->
+        <script src="script.js"></script>
+    </body>
+</html>
