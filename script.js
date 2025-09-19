@@ -145,3 +145,54 @@ document.addEventListener('pointerup', function (event) {
     activeDrag = null;
 });
 
+
+// Makes a given element draggable with the pointer
+function makeDraggable(element) {
+
+    // setting position absolute if not already -- so that left and top offset work fine
+    element.style.position = element.style.position || 'absolute';
+
+    // adding the data-editing boolean flag. so that editing won't affect by dragging and vice-versa..
+    if (typeof element.dataset.editing === 'undefined') {
+        element.dataset.editing = 'false';
+    }
+
+    // preventing unwanted scrolling/zooming gestures on touch devices
+    element.style.touchAction = 'none';
+
+    // this event will fire when user clicks the mouse button or touch the element.
+    element.addEventListener('pointerdown', function (event) {
+
+        // Only allow primary button (left mouse or primary touch) it will ignore the right click.
+        if (event.button && event.button !== 0) {
+            return;
+        }
+
+        // dragging is not possible when user is editing at the same time.
+        if (element.dataset.editing === 'true') {
+            return;
+        }
+
+        // storing this element into the selectedTextBox for later styling.
+        selectedTextBox = element;
+
+        // storing the info in activeDrag object.
+        activeDrag = {
+            el: element,
+            offsetX: event.clientX - element.getBoundingClientRect().left,
+            offsetY: event.clientY - element.getBoundingClientRect().top,
+            pointerId: event.pointerId
+        };
+
+        try {
+            element.setPointerCapture(event.pointerId);
+        } catch (error) {
+            console.log("error occured in makeDraggable function", error.message);
+            // ignore if not supported.
+        }
+
+        // Prevent text selection or Swiper slide move when dragging text box
+        event.preventDefault();
+    });
+}
+
