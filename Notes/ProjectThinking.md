@@ -151,3 +151,22 @@
   * this is what we need to do for drag...
 
 ---
+
+* ### (b) edit setup
+
+  * in edit setup -- we will use single click to select the text-box , double-click to edit the text-box and blur event to change the focus.And we also added a keydown event for escape key to cancel the editing..
+  * now the problem is - when user type in text-box1 and then click on outside the box then edit on text-box1 is not cancelling --- so we can't rely on blurr event for this - because blurr event will be helpful only when user type in text-box 1 and then double click on another text-box in that case the edit will be canceled automatically in text-box1 because foucs has changed and blurr event is fired..
+  * so to cancel the edit when user click outside the text-box we need to attach a global event listener (click) so that when user click outside the text box it cancel the edit.
+
+    ```js
+    document.addEventListener('click', function (event) {
+        if (!event.target.classList.contains('text-box')) {
+            if (selectedTextBox) {
+                selectedTextBox.blur(); // this will trigger the blur handler
+            }
+        }
+    });
+    ```
+
+  * now when the user click outsie the text-box the edit will be canceled. 
+  * here the if condition simply means *if event.target has text-box class then do nothing else check if selectedBox is not undefined -- if it has some value then trigger the blurr event handeler -- and selectedTextBox will have value when user edit text-box 1 and then click add new text and then start editing it*
