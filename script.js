@@ -244,3 +244,17 @@ function enableEditing(element) {
         }
     });
 }
+
+/**
+ * this global event listener is imp to disbale the editing if the user click outside the text box -- if we don't use it and rely on blur event in that case if user click out side the text box won't close the editing -- it will be helpful only when user edit one text box and then double click on another text box in this case the focus is changed so blur event will fire and editing for first text box will be closed..
+ */
+
+// to close the editing when the user click outside the text-box..
+document.addEventListener('click', function (event) {
+    if (!event.target.classList.contains('text-box')) {
+        if (selectedTextBox) {
+            selectedTextBox.blur(); // this will trigger the blur handler
+        }
+    }
+});
+
