@@ -196,3 +196,51 @@ function makeDraggable(element) {
     });
 }
 
+
+
+// enabling the sling click to select and double-click to edit  and blur event to finish editing
+function enableEditing(element) {
+
+    // by default text is not editable.
+    element.contentEditable = 'false';
+    element.dataset.editing = element.dataset.editing || 'false';
+
+    // single click the current text box will be selected on which user does click
+    element.addEventListener('click', function (event) {
+        selectedTextBox = element;
+        event.stopPropagation();
+    });
+
+    // when user do double click it will start the edit
+    element.addEventListener('dblclick', function (event) {
+        element.dataset.editing = 'true';
+        element.contentEditable = 'true';
+        element.focus();
+
+        // Auto-select text for quick replacement --- optional
+        try {
+            const range = document.createRange();
+            range.selectNodeContents(element);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+        } catch (error) {
+            // Ignore if selection fails
+        }
+
+        event.stopPropagation();
+    });
+
+    // disable editing if user click outside the box.
+    element.addEventListener('blur', function () {
+        element.dataset.editing = 'false';
+        element.contentEditable = 'false';
+    });
+
+    // using escape key to exit the editing mode.
+    element.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            element.blur();
+        }
+    });
+}
