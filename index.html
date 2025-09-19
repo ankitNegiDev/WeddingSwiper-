@@ -15,21 +15,81 @@
         />
     </head>
     <body>
-        <div>Testing</div>
+        <!-- <div>Testing</div> -->
+
+        <!-- adding the functionality div -->
+        <div class="toolbar">
+            <!-- this button will add the new text (div) -->
+            <button onclick="addNewTextBox()">Add Text</button>
+
+            <!-- for chaing the font family -- we can add more  -->
+            <select id="font-family">
+                <option value="Arial">Arial</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Trebuchet MS">Trebuchet MS</option>
+                <option value="Impact">Impact</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+                <option value="Lucida Console">Lucida Console</option>
+                <option value="Palatino Linotype">Palatino Linotype</option>
+                <option value="Garamond">Garamond</option>
+                <option value="Brush Script MT">Brush Script MT</option>
+            </select>
+
+            <!-- simple input for chaning color -->
+            <input type="color" id="font-color" />
+
+            <!-- simple input for changing the font size  -->
+            <!-- <input type="number" id="font-size" placeholder="Font Size (px)" /> -->
+
+            <!-- Font size input with datalist -->
+            <input
+                type="number"
+                id="font-size"
+                placeholder="Font Size"
+                list="font-sizes"
+                min="8"
+                max="72"
+            />
+
+            <!-- Datalist with predefined sizes -->
+            <datalist id="font-sizes">
+                <option value="8"></option>
+                <option value="10"></option>
+                <option value="12"></option>
+                <option value="14"></option>
+                <option value="16"></option>
+                <option value="18"></option>
+                <option value="20"></option>
+                <option value="24"></option>
+                <option value="28"></option>
+                <option value="32"></option>
+                <option value="36"></option>
+                <option value="40"></option>
+                <option value="48"></option>
+                <option value="56"></option>
+                <option value="64"></option>
+                <option value="72"></option>
+            </datalist>
+        </div>
 
         <!-- this is main swiper container-->
         <div class="swiper">
-
             <!-- this is wrapper for all slides -->
             <div class="swiper-wrapper">
-
                 <!-- this is slide 1 -->
                 <div class="swiper-slide">
                     <div class="image-container">
                         <img src="images/image1.jpg" alt="Image1" />
-                        <div class="text-box" contenteditable="true">
+                        <div class="text-box" contenteditable="false">
                             Default text on slid 1
                         </div>
+                        <!-- <textarea class="text-box" contenteditable="false">
+                            Default text on slid 1
+                        </textarea> -->
                     </div>
                 </div>
 
@@ -37,9 +97,12 @@
                 <div class="swiper-slide">
                     <div class="image-container">
                         <img src="images/image2.jpg" alt="Image2" />
-                        <div class="text-box" contenteditable="true">
+                        <div class="text-box" contenteditable="false">
                             Default text on slide 2
                         </div>
+                        <!-- <textarea class="text-box" contenteditable="false">
+                            Default text on slide 2
+                        </textarea> -->
                     </div>
                 </div>
 
@@ -47,12 +110,14 @@
                 <div class="swiper-slide">
                     <div class="image-container">
                         <img src="images/image3.jpg" alt="Image3" />
-                        <div class="text-box" contenteditable="true">
+                        <div class="text-box" contenteditable="false">
                             Default text on slide 3
                         </div>
+                        <!-- <textarea class="text-box" contenteditable="false">
+                            Default text on slide 3
+                        </textarea> -->
                     </div>
                 </div>
-
             </div>
 
             <!-- Swiper navigation button -->
