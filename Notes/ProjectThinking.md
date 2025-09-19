@@ -99,3 +99,55 @@
 * task for tommarow -- firs create function for drag, eidt , resize, and for style --- then create a tool bar kind of thing -- so that it appear on page like for style -- to change font-family (a kind of option bar) , forn-size, color etc..
 * keep in mind -- on each slide -- we need to do indepent of other slide -- like whatever is done on slide 1 will not affect the slide 2 or any other slide-
 * and for new text and previous text both also be work independently.
+
+---
+
+* now first we need to add a div that will hold all functionality like add new text , change font-family, font-color , font-size etc
+
+---
+
+* ### (a) Drag setup
+
+  * now for drag we will use **pointermove event listener**
+    * *The pointermove event is fired when a pointer changes coordinates, and the pointer has not been canceled by a browser touch-action. It's very similar to the mousemove event, but with more features.*
+    * *These events happen whether or not any pointer buttons are pressed. They can fire at a very high rate, depends on how fast the user moves the pointer, how fast the machine is, what other tasks and processes are happening, etc.*
+
+  * now we have a global handeler for the drag
+
+    ```js
+    document.addEventListener('pointermove', function (event) {
+
+        if (!activeDrag) return;
+        if (event.pointerId !== activeDrag.pointerId) return; // Ignore other pointers
+
+        const element = activeDrag.el;
+        const parent = element.parentElement;
+        const parentRect = parent.getBoundingClientRect();
+
+        // Calculate new position
+        let x = event.clientX - parentRect.left - activeDrag.offsetX;
+        let y = event.clientY - parentRect.top - activeDrag.offsetY;
+
+        // Prevent dragging outside the parent container
+        const maxX = parent.clientWidth - element.offsetWidth;
+        const maxY = parent.clientHeight - element.offsetHeight;
+
+        if (x < 0) x = 0;
+        if (y < 0) y = 0;
+        if (x > maxX) x = maxX;
+        if (y > maxY) y = maxY;
+
+        // Apply new position
+        element.style.left = x + 'px';
+        element.style.top = y + 'px';
+    });
+    ```
+
+  * this event listener is responsible for moving a text box when user drag it.
+  * this **pointermove** event listen globally for any pointer movement either it is pen , mouse or pen. and it will fire when the pointer moves..
+  * when to stop the drag that will be done by another global event which is **pointerup** event this event will fire when the user relese the mouse button..
+  * now how these event knows which text box need to be drag then for that we had a function **makeDraggable** this function will make a text box dragable.
+  * but keep in mind this **makeDraggable** function should run before the global event listener  *pointermove* because if we don't run this function on the page load or dom load then our global event listener *pointermove* would not know which element need to be draged...
+  * this is what we need to do for drag...
+
+---
