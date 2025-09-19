@@ -121,3 +121,27 @@ document.addEventListener('pointermove', function (event) {
     element.style.left = x + 'px';
     element.style.top = y + 'px';
 });
+
+// this global event listener will end the dragging when user relese the mouse button from pressing else the selected element will move with pointer.
+document.addEventListener('pointerup', function (event) {
+
+    if (!activeDrag) {
+        return;
+    }
+
+    // this will ensure only the pointer that started the drag will only stop that.
+    if (event.pointerId !== activeDrag.pointerId) {
+        return;
+    };
+
+    try {
+        // this is stop the pointer event.
+        activeDrag.el.releasePointerCapture(event.pointerId);
+    } catch (error) {
+        console.log("error in ending the drag");
+    }
+
+    // this tells that -- there is no current element that is being dragged.
+    activeDrag = null;
+});
+
