@@ -168,5 +168,27 @@
     });
     ```
 
-  * now when the user click outsie the text-box the edit will be canceled. 
+  * now when the user click outsie the text-box the edit will be canceled.
   * here the if condition simply means *if event.target has text-box class then do nothing else check if selectedBox is not undefined -- if it has some value then trigger the blurr event handeler -- and selectedTextBox will have value when user edit text-box 1 and then click add new text and then start editing it*
+
+---
+
+* ### (c) Resize handeler
+
+  * this function is responsible for changing the size of the text-box along with the font.
+
+---
+
+* ### (d) Style
+
+  * this function is repsonsible for changing the font-size , font-color and font-family
+
+---
+
+* ### (e) adding the new text-box
+
+  * this function will add the new text-box including that it has the functionality access like drag , style , and re-size.
+
+---
+
+* at last we are creating a function **setupTextBoxes** this function ensures that our functionality (drag,edit,style,resize) works for all text-boxes not only for those which are created by user-- if we don't use this function then all these functionality will not work for default text
