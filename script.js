@@ -235,6 +235,7 @@ function enableEditing(element) {
     element.addEventListener('blur', function () {
         element.dataset.editing = 'false';
         element.contentEditable = 'false';
+        ensureResizeHandle(element);
     });
 
     // using escape key to exit the editing mode.
@@ -259,10 +260,21 @@ document.addEventListener('click', function (event) {
 });
 
 
+function ensureResizeHandle(element) {
+    // Remove any broken handle
+    let existing = element.querySelector('.resize-handle');
+    if (existing) existing.remove();
 
+    // Add new handle
+    addResizeHandle(element);
+}
 
 // function for re-sizing box/container.
 function addResizeHandle(element) {
+
+    // Remove old handle
+    const oldHandle = element.querySelector('.resize-handle');
+    if (oldHandle) oldHandle.remove();
 
     // creating a div on which our logic for re-size will be attached.
     const handle = document.createElement('div');
