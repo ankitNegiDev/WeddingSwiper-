@@ -311,3 +311,34 @@ function addResizeHandle(element) {
 
 
 
+// changing font-family , font-size , and font-color for the selected box.
+function enableStyling() {
+    const fontFamilySelect = document.getElementById('font-family');
+    if (fontFamilySelect) {
+        fontFamilySelect.addEventListener('change', function () {
+            if (selectedTextBox) {
+                selectedTextBox.style.fontFamily = this.value;
+            }
+        });
+    }
+
+    const fontColorInput = document.getElementById('font-color');
+    if (fontColorInput) {
+        fontColorInput.addEventListener('input', function () {
+            if (selectedTextBox) {
+                selectedTextBox.style.color = this.value;
+            }
+        });
+    }
+
+    const fontSizeInput = document.getElementById('font-size');
+    if (fontSizeInput) {
+        fontSizeInput.addEventListener('input', function () {
+            if (selectedTextBox) {
+                selectedTextBox.style.fontSize = this.value + 'px';
+                this.value = '';
+            }
+        });
+    }
+}
+
