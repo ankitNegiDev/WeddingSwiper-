@@ -373,3 +373,24 @@ function addNewTextBox() {
 }
 
 
+
+// this function is imp so that our drag , edit and resize work for default text also else these functionality will work only for new text..
+function setupTextBoxes() {
+    const boxes = document.querySelectorAll('.text-box');
+    for (let i = 0; i < boxes.length; i++) {
+        if (!boxes[i].style.left) {
+            boxes[i].style.left = boxes[i].offsetLeft + 'px';
+        }
+        if (!boxes[i].style.top) {
+            boxes[i].style.top = boxes[i].offsetTop + 'px';
+        }
+
+        makeDraggable(boxes[i]);
+        enableEditing(boxes[i]);
+        addResizeHandle(boxes[i]);
+    }
+}
+
+// Start when DOM is ready
+enableStyling();
+setupTextBoxes();
