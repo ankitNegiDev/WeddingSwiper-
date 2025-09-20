@@ -1,26 +1,240 @@
-*{
-    /* background-color: rgba(145, 173, 175, 0.364); */
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-.swiper{
-    border: 2px solid red;
-    width: 400px;
+/* toolbar */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    border-radius: 20px;
+    padding: 20px 25px;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.086);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1),
+                0 5px 15px rgba(0, 0, 0, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.44);
+    transition: all 0.3s ease-in-out;
+}
+.toolbar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15),
+                0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.toolbar button,
+.toolbar select,
+.toolbar input[type="color"],
+.toolbar input[type="number"] {
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.toolbar button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    min-width: 100px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 12px;
+    cursor: pointer;
+}
+.toolbar button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a42a0 100%);
+}
+
+.toolbar select,
+.toolbar input[type="number"] {
+    border: 2px solid #724ef5ac;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2d3748;
+}
+.toolbar input[type="color"] {
+    width: 50px;
+    height: 50px;
+    padding: 6px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* swiper container */
+.swiper {
+    width: 90%;
+    max-width: 500px;
     height: 600px;
-    /* overflow: hidden; */
+    margin: 20px auto;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3),
+                0 10px 40px rgba(0, 0, 0, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    background: #fff;
 }
 
-.image-container{
+/* swiper slide  */
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    position: relative;
+    overflow: hidden;
+}
+
+/* image contianer */
+.image-container {
     width: 100%;
     height: 100%;
-    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
 }
-
 .image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 1.5rem;
+    transition: transform 0.2s ease-in-out;
+}
+.image-container:hover img {
+    transform: scale(1.03);
+}
+
+/* text-box */
+.text-box {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+    background: linear-gradient(135deg,
+                rgba(0, 0, 0, 0.75) 0%,
+                rgba(0, 0, 0, 0.6) 100%);
+    backdrop-filter: blur(12px);
+    padding: 12px 18px;
+    z-index: 10;
+    cursor: move;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
+                0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    line-height: 1.5;
+    min-width: 80px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+.text-box:hover {
+    background: linear-gradient(135deg,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.7) 100%);
+    transform: scale(1.02);
+}
+.text-box:focus {
+    outline: 3px solid rgba(102, 126, 234, 0.8);
+    outline-offset: 3px;
+    background: rgba(0, 0, 0, 0.9);
+    border-color: #667eea;
+}
+
+/* Resize handle */
+.resize-handle {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: se-resize;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: 2px solid #fff;
+    border-radius: 0 0 15px 0;
+    opacity: 0.8;
+    transition: all 0.2s ease-in-out;
+}
+
+/* swiper navigation */
+.swiper-button-next,
+.swiper-button-prev {
+    color: white !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* swiper pagination */
+.swiper-pagination-bullet {
+    width: 15px !important;
+    height: 15px !important;
+    background: rgba(255, 255, 255, 0.6) !important;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    opacity: 0.7 !important;
+    margin: 0 6px !important;
+}
+.swiper-pagination-bullet-active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    transform: scale(1.4);
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
+}
+
+/* Animations */
+@keyframes slideInSmooth {
+    0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.swiper-slide-active .image-container {
+    animation: slideInSmooth 0.8s ease;
+}
+
+
+@keyframes textBoxSlideIn {
+    0% { opacity: 0; transform: scale(0.8) translateY(-10px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.text-box.newly-added {
+    animation: textBoxSlideIn 0.5s ease;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .toolbar { padding: 15px; gap: 12px; width: 95%; }
+    .swiper { height: 500px; max-width: 95%; }
+    .text-box { font-size: 18px; padding: 10px 14px; }
+    .swiper-button-next, .swiper-button-prev { width: 45px !important; height: 45px !important; }
+}
+@media (max-width: 480px) {
+    body { padding: 15px; }
+    .swiper { height: 400px; max-width: 98%; }
+    .text-box { font-size: 16px; padding: 8px 12px; }
+    .toolbar button { padding: 10px 14px; font-size: 11px; min-width: 85px; }
+    .toolbar input[type="number"] { width: 120px; }
 }
