@@ -5,8 +5,8 @@ This project allows users to create personalized wedding invitation cards by dra
 
 ---
 
-**Live Demo**: [Wedding Card Editor](https://wedding-swiper.vercel.app)
-**Video Demo**:[Wedding Card Editor](https://drive.google.com/file/d/1lWgVgpLc2HMsibNWA-OunH21aTC9qiC4/view?usp=sharing)
+* **Live Demo**: [Wedding Card Editor](https://wedding-swiper.vercel.app)
+* **Video Demo**:[Wedding Card Editor](https://drive.google.com/file/d/1lWgVgpLc2HMsibNWA-OunH21aTC9qiC4/view?usp=sharing)
 
 ## Features
 
