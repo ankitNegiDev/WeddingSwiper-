@@ -192,3 +192,27 @@
 ---
 
 * at last we are creating a function **setupTextBoxes** this function ensures that our functionality (drag,edit,style,resize) works for all text-boxes not only for those which are created by user-- if we don't use this function then all these functionality will not work for default text
+
+---
+
+* **Issue** *when i click on add new text -- a new text is added -- fine -- when i click on resize for the first time -- it works but after doing re-size once and user do some edit then there is no option for re-size -- or when the new text is added -- and when i do dbl click to edit it and user edit the text then also -- there is no option for re-size -- it happens with both -- default text and new text*
+
+```html
+ <div class="text-box" contenteditable="true">
+       Default text
+       <div class="resize-handle"></div>  
+   </div>
+```
+
+```html
+ <div class="text-box" contenteditable="true">
+       New edited text  <!-- Browser rewrites content -->
+       <!-- resize-handle div gets REMOVED! its because the contentEditable is mark as true so it iwll remove everything even the dom element also.-->
+   </div>
+```
+
+* so the reason why it is happening because when user do dbl click to edit the text box this resize-handel div on which we attach the logic is also removed -- and solution is we need to check that this div exist even after the editing---
+* **When contentEditable is active then the browser's editing engine:**
+  * Rewrites the innerHTML to manage text nodes
+  * Removes non-text elements it doesn't recognize as part of the editable content
+  * Recreates the DOM structure for optimal text editing
