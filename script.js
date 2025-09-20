@@ -300,6 +300,7 @@ function addResizeHandle(element) {
             document.removeEventListener('pointerup', onUp);
         }
 
+        // using omMove and onUp function as a handelr for pointermove and pointerup events.
         document.addEventListener('pointermove', onMove);
 
         document.addEventListener('pointerup', onUp);
