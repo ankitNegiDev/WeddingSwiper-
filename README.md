@@ -75,6 +75,13 @@ wedding-card-editor/
 
 ---
 
+## Demo Screenshot
+
+* ![wedding](/images/wedding.png)
+* ![wedding2](/images/wedding%202.png)
+
+---
+
 ## Future Improvements
 
 * **Save / Export** final design as image or PDF.  
@@ -82,13 +89,6 @@ wedding-card-editor/
 * **Upload Custom Backgrounds**.  
 * More **font styles** & custom font support.  
 * Advanced **color picker** for gradients.  
-
----
-
-## Demo Screenshot
-
-* ![wedding](/images/wedding.png)
-* ![wedding2](/images/wedding%202.png)
 
 ---
 
