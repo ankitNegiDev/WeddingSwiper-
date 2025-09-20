@@ -258,3 +258,56 @@ document.addEventListener('click', function (event) {
     }
 });
 
+
+
+
+// function for re-sizing box/container.
+function addResizeHandle(element) {
+
+    // creating a div on which our logic for re-size will be attached.
+    const handle = document.createElement('div');
+    handle.className = 'resize-handle';
+    element.appendChild(handle);
+
+    handle.addEventListener('pointerdown', function (event) {
+        event.stopPropagation();
+
+        const startX = event.clientX;
+        const startY = event.clientY;
+        const startWidth = element.offsetWidth;
+        const startHeight = element.offsetHeight;
+        const startFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+        const minFontSize = 12;
+
+        const minWidth = startWidth * (minFontSize / startFontSize);
+        const minHeight = startHeight * (minFontSize / startFontSize);
+
+        function onMove(e) {
+            // calculate new dimensions
+            let newWidth = Math.max(minWidth, startWidth + (e.clientX - startX)); // e.clientX-startX  will gives us the horizantal distance that pointer cover from the start of drag.
+            let newHeight = Math.max(minHeight, startHeight + (e.clientY - startY));
+
+            element.style.width = newWidth + 'px';
+            element.style.height = newHeight + 'px';
+
+            //  font size change acc to width
+            const scale = newWidth / startWidth;
+            element.style.fontSize = Math.max(minFontSize, startFontSize * scale) + 'px';
+        }
+
+        function onUp() {
+            document.removeEventListener('pointermove', onMove);
+            document.removeEventListener('pointerup', onUp);
+        }
+
+        document.addEventListener('pointermove', onMove);
+
+        document.addEventListener('pointerup', onUp);
+    });
+}
+
+
+
+
+
+
