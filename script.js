@@ -342,3 +342,34 @@ function enableStyling() {
     }
 }
 
+
+
+
+// creating the new text box when user click the add new text button.
+function addNewTextBox() {
+
+    const activeSlide = document.querySelector('.swiper-slide-active .image-container');
+
+    if (!activeSlide) return;
+
+    const newText = document.createElement('div');
+    newText.className = 'text-box';
+    newText.innerText = 'New Text';
+
+    // setting the default position
+    newText.style.left = '50%';
+    newText.style.top = '10%';
+
+    // adding the text on the current slide.
+    activeSlide.appendChild(newText);
+
+    // applying the drag,edit and resize functionality for the new text also.
+    makeDraggable(newText);
+    enableEditing(newText);
+    addResizeHandle(newText);
+
+    // Set as currently selected for toolbar
+    selectedTextBox = newText;
+}
+
+
